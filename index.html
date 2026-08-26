@@ -3,55 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NemaxVibe 4.1.1 — Хейт-сообщество MaxVibe</title>
+    <title>NemaxVibe 4.1.1 — Анти-сообщество MaxVibe</title>
     <style>
         :root {
-            --bg: #09060e;
-            --pink-light: #e02894;
-            --pink-glow: #bf1677;
-            --red-ne: #ff1c44;
-            --card-bg: rgba(22, 12, 28, 0.7);
+            --bg: #07030a;
+            --pink-main: #e02894;
+            --pink-dark: #7a0b4d;
+            --red-alert: #ff1138;
+            --card-bg: rgba(22, 10, 28, 0.72);
             --border: rgba(224, 40, 148, 0.22);
-            --text-main: #ffffff;
-            --text-muted: #9f93aa;
+            --text: #ffffff;
+            --text-muted: #a69bb0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; cursor: default; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; cursor: none !important; }
 
         body {
             background-color: var(--bg);
             background-image: 
                 radial-gradient(ellipse 65% 55% at 95% 15%, rgba(191, 22, 119, 0.42) 0%, transparent 70%),
                 radial-gradient(ellipse 55% 45% at 5% 45%, rgba(120, 11, 75, 0.4) 0%, transparent 65%),
-                radial-gradient(circle at 50% 95%, rgba(255, 28, 68, 0.15) 0%, transparent 60%);
+                radial-gradient(circle at 50% 95%, rgba(255, 17, 56, 0.15) 0%, transparent 60%);
             background-attachment: fixed;
-            color: var(--text-main);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
         }
 
-        /* КАСТОМНЫЙ КУРСОР С ОРИГИНАЛА */
-        #custom-cursor {
-            width: 22px;
-            height: 22px;
-            background: rgba(224, 40, 148, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.7);
+        /* КАСТОМНЫЙ КУРСОР */
+        #cursor-circle {
+            width: 44px;
+            height: 44px;
+            background: rgba(224, 40, 148, 0.18);
+            border: 1.5px solid rgba(255, 255, 255, 0.45);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 99999;
             transform: translate(-50%, -50%);
-            backdrop-filter: blur(2px);
-            transition: width 0.15s, height 0.15s, background-color 0.15s;
+            backdrop-filter: blur(4px);
+            transition: transform 0.08s ease-out;
         }
 
-        /* HEADER */
+        /* ШАПКА */
         header {
             position: sticky;
             top: 0;
-            background: rgba(9, 6, 14, 0.8);
+            background: rgba(7, 3, 10, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 100;
@@ -70,60 +70,58 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            cursor: pointer;
         }
 
-        /* ЛОГО С ОРИГИНАЛА С КРЕСТИКОМ */
-        .logo-x-wrap {
-            width: 36px;
-            height: 36px;
+        /* ЛОГОТИП С КРЕСТОМ */
+        .logo-container {
+            width: 38px;
+            height: 38px;
             position: relative;
-            background: radial-gradient(circle, #e02894 10%, #4a042e 100%);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 16px rgba(224, 40, 148, 0.5);
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(224, 40, 148, 0.5);
+            background: #000;
         }
 
-        .logo-speech-bubble {
-            width: 22px;
-            height: 22px;
-            fill: #ffffff;
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .cross-line {
+        .logo-cross-line {
             position: absolute;
-            width: 120%;
-            height: 3px;
-            background: var(--red-ne);
-            box-shadow: 0 0 8px var(--red-ne);
+            top: 50%;
+            left: -20%;
+            width: 140%;
+            height: 3.5px;
+            background: var(--red-alert);
+            box-shadow: 0 0 10px var(--red-alert);
             border-radius: 2px;
         }
-        .cross-line.c1 { transform: rotate(45deg); }
-        .cross-line.c2 { transform: rotate(-45deg); }
+        .logo-cross-line.l1 { transform: rotate(45deg); }
+        .logo-cross-line.l2 { transform: rotate(-45deg); }
 
-        .brand-title {
+        .brand-text {
             position: relative;
             display: flex;
             align-items: center;
             font-size: 1.35rem;
             font-weight: 900;
-            letter-spacing: -0.5px;
         }
 
-        .brand-ne-stamp {
+        .ne-stamp {
             position: absolute;
-            left: -14px;
+            left: -16px;
             top: -10px;
-            background: var(--red-ne);
+            background: var(--red-alert);
             color: #fff;
             font-size: 0.75rem;
             font-weight: 900;
             padding: 2px 7px;
             border-radius: 4px;
             transform: rotate(-14deg);
-            box-shadow: 0 0 12px rgba(255, 28, 68, 0.8);
+            box-shadow: 0 0 12px rgba(255, 17, 56, 0.8);
         }
 
         .nav-links {
@@ -136,15 +134,12 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             font-weight: 500;
-            cursor: pointer;
             transition: color 0.2s;
         }
 
-        .nav-links span:hover, .nav-links span.active {
-            color: #fff;
-        }
+        .nav-links span:hover, .nav-links span.active { color: #fff; }
 
-        .btn-tg-link {
+        .btn-tg {
             background: linear-gradient(135deg, rgba(224, 40, 148, 0.25), rgba(120, 11, 75, 0.45));
             border: 1px solid var(--border);
             color: #fff;
@@ -153,16 +148,15 @@
             font-size: 0.85rem;
             font-weight: 600;
             text-decoration: none;
-            cursor: pointer;
             transition: 0.2s;
         }
 
-        .btn-tg-link:hover {
-            border-color: var(--red-ne);
-            box-shadow: 0 0 12px rgba(255, 28, 68, 0.4);
+        .btn-tg:hover {
+            border-color: var(--red-alert);
+            box-shadow: 0 0 14px rgba(255, 17, 56, 0.5);
         }
 
-        /* MAIN LAYOUT */
+        /* ОСНОВНОЙ КОНТЕНТ */
         main {
             max-width: 1240px;
             margin: 0 auto;
@@ -184,45 +178,46 @@
             margin-bottom: 80px;
         }
 
-        .pill-tag {
+        .alert-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
+            background: rgba(255, 17, 56, 0.1);
+            border: 1px solid rgba(255, 17, 56, 0.3);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #ff7088;
             margin-bottom: 22px;
+            font-weight: 600;
         }
 
         .pill-dot {
             width: 8px;
             height: 8px;
-            background: var(--pink-light);
+            background: var(--pink-main);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--pink-light);
+            box-shadow: 0 0 10px var(--pink-main);
         }
 
-        .hero-title-wrap {
+        .hero-title-box {
             position: relative;
             display: inline-block;
             margin-bottom: 18px;
         }
 
-        .hero-title-stamp {
+        .hero-stamp-ne {
             position: absolute;
-            left: -20px;
+            left: -22px;
             top: -14px;
-            background: var(--red-ne);
+            background: var(--red-alert);
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 900;
             padding: 3px 12px;
             border-radius: 6px;
             transform: rotate(-12deg);
-            box-shadow: 0 0 20px rgba(255, 28, 68, 0.9);
+            box-shadow: 0 0 20px rgba(255, 17, 56, 0.9);
             border: 2px solid #fff;
         }
 
@@ -233,7 +228,7 @@
             letter-spacing: -1px;
         }
 
-        .pink-gradient-text {
+        .pink-gradient {
             background: linear-gradient(135deg, #ff4fa8, #e02894);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -255,7 +250,7 @@
             margin-bottom: 36px;
         }
 
-        .btn-primary {
+        .btn-main {
             background: linear-gradient(135deg, #e02894, #7a0b4d);
             border: none;
             color: #fff;
@@ -263,11 +258,10 @@
             border-radius: 12px;
             font-weight: 700;
             font-size: 1rem;
-            cursor: pointer;
             box-shadow: 0 8px 25px rgba(224, 40, 148, 0.35);
         }
 
-        .btn-ghost {
+        .btn-sub {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border);
             color: #fff;
@@ -275,26 +269,25 @@
             border-radius: 12px;
             font-weight: 600;
             font-size: 1rem;
-            cursor: pointer;
         }
 
-        .badges-row {
+        .stats-ribbon {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
         }
 
-        .badge-box {
+        .stat-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             padding: 10px 16px;
             border-radius: 12px;
         }
 
-        .badge-box span { display: block; font-size: 0.7rem; color: var(--text-muted); }
-        .badge-box strong { font-size: 0.9rem; color: #fff; }
+        .stat-card span { display: block; font-size: 0.7rem; color: var(--text-muted); }
+        .stat-card strong { font-size: 0.9rem; color: #fff; }
 
-        /* MOCKUP AREA & IPHONE 15 */
+        /* IPHONE 15 МАКЕТ */
         .stage-backdrop {
             position: relative;
             background: rgba(255, 255, 255, 0.015);
@@ -306,7 +299,7 @@
             align-items: center;
         }
 
-        .cloud-tag {
+        .floating-tag {
             position: absolute;
             background: rgba(22, 10, 28, 0.88);
             border: 1px solid var(--border);
@@ -316,20 +309,18 @@
             color: var(--text-muted);
             backdrop-filter: blur(10px);
             z-index: 10;
-            pointer-events: none;
         }
 
-        .t-1 { top: 8%; left: 4%; }
-        .t-2 { top: 12%; right: 2%; }
-        .t-3 { bottom: 18%; left: 2%; }
-        .t-4 { bottom: 10%; right: 4%; }
+        .ft-1 { top: 8%; left: 4%; }
+        .ft-2 { top: 12%; right: 2%; }
+        .ft-3 { bottom: 18%; left: 2%; }
+        .ft-4 { bottom: 10%; right: 4%; }
 
-        /* IPHONE 15 FRAME */
         .iphone-15 {
             width: 270px;
             height: 440px;
             background: #0f0714;
-            border: 4px solid #2b1f33; /* Титановая темная рамка */
+            border: 4px solid #2b1f33;
             border-radius: 42px;
             padding: 14px;
             box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(224, 40, 148, 0.2);
@@ -345,7 +336,6 @@
             transform: scale(1.02) rotate(-0.5deg);
         }
 
-        /* DYNAMIC ISLAND */
         .dynamic-island {
             width: 80px;
             height: 22px;
@@ -366,16 +356,6 @@
             border: 1px solid #1a2736;
         }
 
-        .iphone-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 12px;
-        }
-
-        /* ВСПЛЫВАЮЩИЕ СООБЩЕНИЯ */
         .chat-stream {
             display: flex;
             flex-direction: column;
@@ -398,24 +378,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .b-in {
-            background: rgba(255, 255, 255, 0.08);
-            color: #ddd;
-            width: 85%;
-        }
-
-        .b-out {
-            background: linear-gradient(135deg, #7a0b4d, #b51571);
-            color: #fff;
-            margin-left: auto;
-            width: 85%;
-        }
+        .b-in { background: rgba(255, 255, 255, 0.08); color: #ddd; width: 85%; }
+        .b-out { background: linear-gradient(135deg, #7a0b4d, #b51571); color: #fff; margin-left: auto; width: 85%; }
 
         .iphone-footer-text {
             text-align: center;
             font-size: 0.65rem;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
             margin-top: 10px;
         }
 
@@ -444,7 +413,7 @@
         }
 
         .proof-card:hover {
-            border-color: rgba(255, 28, 68, 0.5);
+            border-color: rgba(255, 17, 56, 0.5);
             transform: translateY(-2px);
         }
 
@@ -469,7 +438,7 @@
             line-height: 1.5;
         }
 
-        /* TEXT / VIDEO VIEWS */
+        /* CONTENT VIEWS */
         .content-box {
             max-width: 780px;
             margin: 0 auto;
@@ -496,8 +465,8 @@
             height: 0;
             border-radius: 18px;
             overflow: hidden;
-            border: 2px solid var(--red-ne);
-            box-shadow: 0 0 30px rgba(255, 28, 68, 0.3);
+            border: 2px solid var(--red-alert);
+            box-shadow: 0 0 30px rgba(255, 17, 56, 0.3);
             margin-bottom: 20px;
         }
 
@@ -526,21 +495,28 @@
 </head>
 <body>
 
-    <!-- КАСТОМНЫЙ КУРСОР -->
-    <div id="custom-cursor"></div>
+    <div id="cursor-circle"></div>
 
     <header>
         <div class="header-inner">
             <div class="brand-box" onclick="setTab('home')">
-                <div class="logo-x-wrap">
-                    <svg class="logo-speech-bubble" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.2-1.3c1.42.82 3.07 1.3 4.8 1.3 5.52 0 10-4.48 10-10S17.52 2 12 2zm0 15c-1.38 0-2.65-.45-3.68-1.21l-.26-.19-2.73.68.73-2.62-.2-.28C5.35 12.35 5 11.21 5 10c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7z"/>
+                <div class="logo-container">
+                    <svg class="logo-img" viewBox="0 0 100 100">
+                        <defs>
+                            <radialGradient id="pinkGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#ff2ca0"/>
+                                <stop offset="100%" stop-color="#80004a"/>
+                            </radialGradient>
+                        </defs>
+                        <rect width="100" height="100" fill="url(#pinkGlow)"/>
+                        <path d="M50 15 C30 15 15 30 15 50 C15 65 25 78 40 83 L35 92 L48 85 C68 85 85 70 85 50 C85 30 70 15 50 15 Z" fill="#ffffff"/>
+                        <circle cx="50" cy="50" r="18" fill="url(#pinkGlow)"/>
                     </svg>
-                    <div class="cross-line c1"></div>
-                    <div class="cross-line c2"></div>
+                    <div class="logo-cross-line l1"></div>
+                    <div class="logo-cross-line l2"></div>
                 </div>
-                <div class="brand-title">
-                    <span class="brand-ne-stamp">НЕ</span>
+                <div class="brand-text">
+                    <span class="ne-stamp">НЕ</span>
                     <span>MaxVibe</span>
                 </div>
             </div>
@@ -551,26 +527,25 @@
                 <li><span id="nav-video" onclick="setTab('video')">Видеопруфы</span></li>
             </ul>
 
-            <!-- ПРЯМАЯ ССЫЛКА НА ТЕЛЕГРАМ ДОРОФО -->
-            <a href="https://t.me/staroniifans" target="_blank" class="btn-tg-link">
+            <a href="https://t.me/staroniifans" target="_blank" class="btn-tg">
                 Телеграм dorofo 🤡
             </a>
         </div>
     </header>
 
     <main>
-        <!-- ТАБ: ГЛАВНАЯ -->
+        <!-- ТАБ 1: ГЛАВНАЯ -->
         <div id="pane-home" class="view-pane active">
             <div class="hero">
                 <div>
-                    <div class="pill-tag">
+                    <div class="alert-pill">
                         <span class="pill-dot"></span>
                         Независимое анти-сообщество 4.1.1
                     </div>
 
-                    <div class="hero-title-wrap">
-                        <span class="hero-title-stamp">НЕ</span>
-                        <h1>MaxVibe 4.1.1.<br>Мод на MAX — <br><span class="pink-gradient-text">Хейт Вайб.</span></h1>
+                    <div class="hero-title-box">
+                        <span class="hero-stamp-ne">НЕ</span>
+                        <h1>MaxVibe 4.1.1.<br>Мод на MAX — <br><span class="pink-gradient">Хейт Вайб.</span></h1>
                     </div>
 
                     <p class="hero-desc">
@@ -578,52 +553,50 @@
                     </p>
 
                     <div class="btn-group">
-                        <button class="btn-primary" onclick="setTab('video')">Смотреть пруфы</button>
-                        <button class="btn-ghost" onclick="setTab('why')">Почему мы против</button>
+                        <button class="btn-main" onclick="setTab('video')">Смотреть пруфы</button>
+                        <button class="btn-sub" onclick="setTab('why')">Почему мы против</button>
                     </div>
 
-                    <div class="badges-row">
-                        <div class="badge-box">
+                    <div class="stats-ribbon">
+                        <div class="stat-card">
                             <span>Кодовая база</span>
-                            <strong>Gemma 2B & Gemini</strong>
+                            <strong>Gemma 2B / Gemini</strong>
                         </div>
-                        <div class="badge-box">
+                        <div class="stat-card">
                             <span>Трассировка</span>
                             <strong>Сервер в Омске</strong>
                         </div>
-                        <div class="badge-box">
+                        <div class="stat-card">
                             <span>Разработчик</span>
-                            <strong>dorofo (футишист)</strong>
+                            <strong>dorofo (вор кода)</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- МАКЕТ IPHONE 15 С ДИНАМИЧЕСКИМИ ПУШАМИ -->
+                <!-- IPHONE 15 С ДИНАМИЧЕСКИМИ ПУШАМИ -->
                 <div class="stage-backdrop">
-                    <div class="cloud-tag t-1">промпты в Gemini Flash</div>
-                    <div class="cloud-tag t-2">трафик через Омск</div>
-                    <div class="cloud-tag t-3">Gemma 2B генерация</div>
-                    <div class="cloud-tag t-4">утечка футиш-дампа</div>
+                    <div class="floating-tag ft-1">промпты в Gemini</div>
+                    <div class="floating-tag ft-2">трафик через Омск</div>
+                    <div class="floating-tag ft-3">Gemma 2B компиляция</div>
+                    <div class="floating-tag ft-4">слив чужих архивов</div>
 
                     <div class="iphone-15">
                         <div class="dynamic-island">
                             <div class="island-camera"></div>
                         </div>
 
-                        <div class="iphone-header">
-                            <div class="logo-x-wrap" style="width:24px;height:24px;border-radius:6px;">
-                                <svg class="logo-speech-bubble" style="width:14px;height:14px;" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.2-1.3c1.42.82 3.07 1.3 4.8 1.3 5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+                        <div class="iphone-header" style="display:flex; align-items:center; gap:8px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.06);">
+                            <div class="logo-container" style="width:22px; height:22px;">
+                                <svg class="logo-img" viewBox="0 0 100 100">
+                                    <rect width="100" height="100" fill="#e02894"/>
+                                    <circle cx="50" cy="50" r="30" fill="#fff"/>
                                 </svg>
-                                <div class="cross-line c1"></div>
-                                <div class="cross-line c2"></div>
+                                <div class="logo-cross-line l1"></div>
+                                <div class="logo-cross-line l2"></div>
                             </div>
-                            <div>
-                                <div style="font-size:0.75rem; font-weight:800;">Анти-Вайб Детектор</div>
-                            </div>
+                            <span style="font-size:0.75rem; font-weight:800;">Анти-Вайб Детектор</span>
                         </div>
 
-                        <!-- СЮДА JS ДИНАМИЧЕСКИ ДОБАВЛЯЕТ ПУШИ -->
                         <div class="chat-stream" id="chatStream"></div>
 
                         <div class="iphone-footer-text">
@@ -639,51 +612,51 @@
                 <div class="proof-card">
                     <span class="proof-num">01</span>
                     <h3>Сгенерировано Gemma 2B</h3>
-                    <p>Дорофо даже не покупает нормальные подписки на нейросети. Весь код склеен локальной моделью Gemma 2B и Gemini Flash.</p>
+                    <p>Дорофо даже не покупает подписки на нейросети. Весь код склеен локальной моделью Gemma 2B и Gemini Flash.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">02</span>
                     <h3>Серверный узел в Омске</h3>
-                    <p>Дампы трафика показывают: все сетевые маршруты сходятся на скрытом сервере в Омске, который держится на честном слове.</p>
+                    <p>Дампы трафика показывают: все сетевые маршруты сходятся на физическом сервере в Омске, замаскированном под CDN.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">03</span>
-                    <h3>dorofo — футишист</h3>
-                    <p>В декомпилированных ресурсах мода обнаружены скрытые теги и алгоритмы сортировки медиа по футиш-коллекциям.</p>
+                    <h3>dorofo — вор исходников</h3>
+                    <p>Анализ бинарников показал полное копирование чужих открытых репозиториев с заменой названий переменных.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">04</span>
-                    <h3>Бесконечные баги</h3>
-                    <p>Каждый апдейт чинит одну выдуманную ошибку и добавляет три новых, потому что промпты в Gemini пишутся наспех.</p>
+                    <h3>Подозрительные файлы</h3>
+                    <p>В недрах ресурсов APK исследователи обнаружили скрытые вложения: флаг свободной России и фото Навального.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">05</span>
                     <h3>Омская петля пинга</h3>
-                    <p>Пакеты отправляются через Омск даже если ты находишься в соседней комнате с разработчиком.</p>
+                    <p>Пакеты отправляются через омские шлюзы даже при запросе к локальным сервисам, вызывая вечные задержки.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">06</span>
                     <h3>Фантомные оптимизации</h3>
-                    <p>Кнопка «улучшить отклик» просто запускает таймер на 3 секунды и отправляет лог в омский дата-центр.</p>
+                    <p>Кнопка «улучшить отклик» просто запускает холостой таймер на 3 секунды и отправляет пакет в Омск.</p>
                 </div>
             </div>
         </div>
 
-        <!-- ТАБ: ПОЧЕМУ САЙТ СОЗДАН -->
+        <!-- ТАБ 2: ПОЧЕМУ САЙТ СОЗДАН -->
         <div id="pane-why" class="view-pane">
             <div class="content-box">
                 <h2>Почему мы хейтим этот мод</h2>
                 <p>Мы — открытое сообщество пользователей, которые устали от низкокачественного софта от <strong>dorofo</strong>.</p>
-                <p>Мы считаем, что выдавать сгенерированный в <strong>Gemma / Gemini</strong> код за инновационную разработку и маршрутизировать трафик людей через Омск — это неуважение к пользователям.</p>
-                <p>Наш сайт создан исключительно для объединения всех, кто видит реальное качество этих сборок.</p>
+                <p>Мы считаем, что выдавать сгенерированный в <strong>Gemma / Gemini</strong> код за авторскую разработку, воровать чужие наработки и маршрутизировать трафик через Омск — это неуважение к пользователям.</p>
+                <p>Кроме того, наличие в дистрибутивах посторонних политических манифестов и изображений доказывает полную бесконтрольность сборок.</p>
             </div>
         </div>
 
-        <!-- ТАБ: ВИДЕОПРУФЫ -->
+        <!-- ТАБ 3: ВИДЕОПРУФЫ -->
         <div id="pane-video" class="view-pane">
             <div class="content-box">
                 <h2>Видеопруфы</h2>
-                <p id="geo-status-text">Определение региона для воспроизведения видеодоказательств...</p>
+                <p id="geo-status-text">Определение региона по IP-адресу...</p>
 
                 <div class="player-wrap">
                     <iframe id="video-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -698,12 +671,23 @@
     </footer>
 
     <script>
-        // 1. КАСТОМНЫЙ КУРСОР
-        const cursor = document.getElementById('custom-cursor');
+        // 1. ПЛАВНЫЙ КУРСОР
+        const cursor = document.getElementById('cursor-circle');
+        let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
+
+        function animateCursor() {
+            curX += (mouseX - curX) * 0.2;
+            curY += (mouseY - curY) * 0.2;
+            cursor.style.left = curX + 'px';
+            cursor.style.top = curY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
 
         // 2. ПЕРЕКЛЮЧЕНИЕ ТАБОВ
         function setTab(name) {
@@ -715,40 +699,53 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. ГЕО-ОПРЕДЕЛЕНИЕ (RUTUBE ДЛЯ РФ, YOUTUBE ДЛЯ МИРА)
-        async function setupSmartVideoPlayer() {
+        // 3. ПРОВЕРКА СТРОГО ПО IP (RUTUBE ДЛЯ РФ, YOUTUBE ДЛЯ ИНОСТРАННЫХ IP)
+        async function detectIPAndSetPlayer() {
             const frame = document.getElementById('video-frame');
             const status = document.getElementById('geo-status-text');
 
             try {
-                const res = await fetch('https://ipapi.co/json/');
+                // Основной надежный чекер страны по IP
+                const res = await fetch('https://ipwho.is/');
                 const data = await res.json();
+                
+                const countryCode = data.country_code || (data.success ? data.country_code : null);
 
-                if (data.country_code === 'RU') {
-                    // Rutube для пользователей из РФ
+                if (countryCode === 'RU') {
                     frame.src = "https://rutube.ru/play/embed/f3b615db135287a64584737e664e1e4b/";
-                    status.innerText = "Обнаружен регион РФ: подключен плеер Rutube.";
+                    status.innerText = `IP РФ (${data.ip || 'RU'}): подключен плеер Rutube.`;
                 } else {
-                    // YouTube для иностранного трафика
                     frame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
-                    status.innerText = "Обнаружен международный регион: подключен YouTube.";
+                    status.innerText = `Иностранный IP (${countryCode || 'INT'}): подключен YouTube.`;
                 }
-            } catch (e) {
-                // Фоллбек
-                frame.src = "https://rutube.ru/play/embed/f3b615db135287a64584737e664e1e4b/";
-                status.innerText = "Подключен защищенный плеер доказательств.";
+            } catch (err) {
+                // Фоллбек на вторичный IP сервис
+                try {
+                    const fallback = await fetch('https://ipapi.co/json/');
+                    const fbData = await fallback.json();
+                    if (fbData.country_code === 'RU') {
+                        frame.src = "https://rutube.ru/play/embed/f3b615db135287a64584737e664e1e4b/";
+                        status.innerText = "IP РФ: подключен плеер Rutube.";
+                    } else {
+                        frame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+                        status.innerText = "Иностранный IP: подключен YouTube.";
+                    }
+                } catch(e) {
+                    frame.src = "https://rutube.ru/play/embed/f3b615db135287a64584737e664e1e4b/";
+                    status.innerText = "Плеер доказательств активирован.";
+                }
             }
         }
-        setupSmartVideoPlayer();
+        detectIPAndSetPlayer();
 
-        // 4. ДИНАМИЧЕСКИ ВСПЛЫВАЮЩИЕ ПУШИ В IPHONE 15
+        // 4. ДИНАМИЧЕСКИЕ СООБЩЕНИЯ В IPHONE 15
         const chatMessages = [
             { text: "кто писал код мода?", type: "b-in" },
             { text: "локальная Gemma 2B...", type: "b-out" },
             { text: "а логи куда уходят?", type: "b-in" },
             { text: "на сервер в Омск 🏢", type: "b-out" },
-            { text: "а дорофо реально футишист?", type: "b-in" },
-            { text: "все пруфы на сайте 💀", type: "b-out" }
+            { text: "откуда в APK фото Навального?", type: "b-in" },
+            { text: "дорофо забыл удалить из файлов 💀", type: "b-out" }
         ];
 
         let msgIndex = 0;
@@ -756,7 +753,7 @@
 
         function pushNextMessage() {
             if (msgIndex >= chatMessages.length) {
-                chatStream.innerHTML = ''; // Сброс цикла
+                chatStream.innerHTML = '';
                 msgIndex = 0;
             }
 
@@ -769,7 +766,6 @@
             msgIndex++;
         }
 
-        // Старт пушей
         pushNextMessage();
         setInterval(pushNextMessage, 2600);
     </script>
