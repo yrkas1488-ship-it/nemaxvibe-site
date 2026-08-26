@@ -10,13 +10,13 @@
             --pink-main: #e02894;
             --pink-dark: #7a0b4d;
             --red-alert: #ff1138;
-            --card-bg: rgba(22, 10, 28, 0.72);
+            --card-bg: rgba(22, 10, 28, 0.85);
             --border: rgba(224, 40, 148, 0.22);
             --text: #ffffff;
             --text-muted: #a69bb0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; cursor: none !important; }
 
         body {
             background-color: var(--bg);
@@ -32,26 +32,24 @@
             overflow-x: hidden;
         }
 
-        /* КАСТОМНЫЙ БОЛЬШОЙ ПРОЗРАЧНЫЙ КУРСОР БЕЗ БЛЮРА */
-        #cursor-circle {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(224, 40, 148, 0.08) 0%, rgba(224, 40, 148, 0.01) 70%, transparent 100%);
-            border: 1px solid rgba(224, 40, 148, 0.25);
+        /* МЯГКИЙ ГРАДИЕНТНЫЙ КУРСОР */
+        #cursor-glow {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(140, 25, 80, 0.28) 0%, rgba(90, 12, 55, 0.12) 45%, transparent 70%);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
-            transition: transform 0.08s ease-out;
+            transition: transform 0.05s ease-out;
         }
 
         /* ШАПКА */
         header {
             position: sticky;
             top: 0;
-            background: rgba(7, 3, 10, 0.85);
-            backdrop-filter: blur(20px);
+            background: rgba(7, 3, 10, 0.92);
             border-bottom: 1px solid var(--border);
             z-index: 100;
         }
@@ -69,7 +67,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            cursor: pointer;
         }
 
         .logo-container {
@@ -144,7 +141,6 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             font-weight: 500;
-            cursor: pointer;
             transition: color 0.2s;
         }
 
@@ -176,7 +172,7 @@
             width: 100%;
         }
 
-        .view-pane { display: none; }
+        .view-pane { display: none; position: relative; }
         .view-pane.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -270,7 +266,6 @@
             font-weight: 700;
             font-size: 1rem;
             box-shadow: 0 8px 25px rgba(224, 40, 148, 0.35);
-            cursor: pointer;
         }
 
         .btn-sub {
@@ -281,7 +276,6 @@
             border-radius: 12px;
             font-weight: 600;
             font-size: 1rem;
-            cursor: pointer;
         }
 
         .stats-ribbon {
@@ -300,10 +294,10 @@
         .stat-card span { display: block; font-size: 0.7rem; color: var(--text-muted); }
         .stat-card strong { font-size: 0.9rem; color: #fff; }
 
-        /* IPHONE 15 */
+        /* IPHONE 15 (БЕЗ BACKDROP-FILTER) */
         .stage-backdrop {
             position: relative;
-            background: rgba(255, 255, 255, 0.015);
+            background: #0f0714;
             border: 1px solid var(--border);
             border-radius: 36px;
             padding: 40px 20px;
@@ -314,13 +308,12 @@
 
         .floating-tag {
             position: absolute;
-            background: rgba(22, 10, 28, 0.88);
+            background: #190a20;
             border: 1px solid var(--border);
             padding: 8px 14px;
             border-radius: 10px;
             font-size: 0.8rem;
             color: var(--text-muted);
-            backdrop-filter: blur(10px);
             z-index: 10;
         }
 
@@ -332,7 +325,7 @@
         .iphone-15 {
             width: 270px;
             height: 440px;
-            background: #0f0714;
+            background: #09030c;
             border: 4px solid #2b1f33;
             border-radius: 42px;
             padding: 14px;
@@ -421,7 +414,6 @@
             border-radius: 14px;
             padding: 24px;
             position: relative;
-            backdrop-filter: blur(10px);
             transition: 0.2s;
         }
 
@@ -492,6 +484,33 @@
             border: none;
         }
 
+        /* ПАСХАЛКА СПРАВА СНИЗУ В ВИДЕОПРУФАХ */
+        .easter-egg {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 75px;
+            height: 75px;
+            border-radius: 18px;
+            border: 2px solid var(--pink-main);
+            box-shadow: 0 0 15px rgba(224, 40, 148, 0.4);
+            overflow: hidden;
+            z-index: 90;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .easter-egg:hover {
+            transform: scale(1.45) rotate(-6deg);
+            box-shadow: 0 0 25px rgba(255, 17, 56, 0.8);
+            border-color: var(--red-alert);
+        }
+
+        .easter-egg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         footer {
             border-top: 1px solid var(--border);
             padding: 30px;
@@ -503,13 +522,13 @@
         @media (max-width: 900px) {
             .hero { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
-            #cursor-circle { display: none; }
+            #cursor-glow { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div id="cursor-circle"></div>
+    <div id="cursor-glow"></div>
 
     <header>
         <div class="header-inner">
@@ -677,6 +696,11 @@
                 </div>
                 <p style="font-size:0.9rem;"><em>Секретная видеофиксация процесса разработки и настройки омских серверов.</em></p>
             </div>
+
+            <!-- ПАСХАЛКА СПРАВА СНИЗУ -->
+            <div class="easter-egg" title="Секретный агент Омска">
+                <img src="https://i.ibb.co/vz072sV/spotify-tree.png" alt="Easter Egg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%231db954\'/><circle cx=\'50\' cy=\'50\' r=\'25\' fill=\'%23000\'/><text x=\'50\' y=\'55\' fill=\'%23fff\' font-size=\'10\' text-anchor=\'middle\'>OMSK</text></svg>'">
+            </div>
         </div>
     </main>
 
@@ -685,8 +709,8 @@
     </footer>
 
     <script>
-        // 1. БОЛЬШОЙ ПЛАВНЫЙ КУРСОР
-        const cursor = document.getElementById('cursor-circle');
+        // 1. ПЛАВНЫЙ СЛЕДУЮЩИЙ КУРСОР БЕЗ БЛЮРА
+        const cursor = document.getElementById('cursor-glow');
         let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
 
         document.addEventListener('mousemove', (e) => {
@@ -695,8 +719,8 @@
         });
 
         function animateCursor() {
-            curX += (mouseX - curX) * 0.15;
-            curY += (mouseY - curY) * 0.15;
+            curX += (mouseX - curX) * 0.18;
+            curY += (mouseY - curY) * 0.18;
             cursor.style.left = curX + 'px';
             cursor.style.top = curY + 'px';
             requestAnimationFrame(animateCursor);
@@ -713,7 +737,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. БЕСШУМНОЕ ГЕО-ОПРЕДЕЛЕНИЕ ПО IP БЕЗ ЛИШНЕГО ТЕКСТА
+        // 3. БЕСШУМНЫЙ ПЛЕЕР ПО IP
         async function loadSmartVideo() {
             const frame = document.getElementById('video-frame');
             try {
