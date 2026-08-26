@@ -1,41 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NemaxVibe | DevOps & Infrastructure</title>
+    <title>NemaxVibe - Хейт-Клуб Дорофо</title>
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --accent: #58a6ff; --green: #3fb950; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 32px; max-width: 520px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .avatar { width: 72px; height: 72px; border-radius: 50%; background: #21262d; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; border: 2px solid var(--accent); }
-        h1 { margin: 0 0 8px 0; font-size: 1.5rem; color: #f0f6fc; }
-        p.subtitle { margin: 0 0 20px 0; color: #8b949e; font-size: 0.95rem; }
-        .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(63, 185, 80, 0.15); color: var(--green); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
-        .badge::before { content: ""; width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-        .tag { background: #21262d; color: #8b949e; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-family: monospace; }
-        .links a { display: block; text-align: center; background: #21262d; color: #f0f6fc; text-decoration: none; padding: 10px; border-radius: 6px; font-weight: 500; border: 1px solid var(--border); transition: 0.2s; margin-top: 10px; }
-        .links a:hover { background: #30363d; border-color: #8b949e; }
+        :root { --bg: #030508; --gradient-center: rgba(139, 0, 0, 0.4); --gradient-outer: rgba(3, 5, 8, 0); --card: #0d1117; --border: #30363d; --text: #c9d1d9; --accent: #ff3333; --accent-dark: #cc0000; --green: #3fb950; }
+        body { margin: 0; background: var(--bg); background-image: radial-gradient(circle at center, var(--gradient-center) 0%, var(--gradient-outer) 70%); background-attachment: fixed; color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; line-height: 1.5; display: flex; flex-direction: column; }
+        * { box-sizing: border-box; }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+        
+        /* HEADER */
+        header { position: sticky; top: 0; background: rgba(3, 5, 8, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 16px; width: 100%; }
+        .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; }
+        .logo-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; text-transform: uppercase; font-weight: 900; }
+        .nav-menu { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+        .nav-link { font-size: 0.95rem; color: #8b949e; cursor: pointer; }
+        .nav-link:hover, .nav-link.active { color: white; }
+        .nav-link.active { font-weight: 600; }
+        .tg-btn { background: #21262d; border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-size: 0.9rem; color: white; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+        .tg-btn:hover { background: var(--card); border-color: #8b949e; }
+
+        /* MAIN CONTENT SECTION */
+        main { flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; padding: 48px 16px 120px; }
+        .page-content { display: none; }
+        .page-content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* BANNER */
+        .status-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 51, 51, 0.15); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; border: 1px solid rgba(255, 51, 51, 0.2); }
+        .status-badge::before { content: ""; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+        
+        /* HERO AREA */
+        .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: start; margin-bottom: 64px; }
+        @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; justify-items: center; } }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; color: white; margin: 0 0 16px; }
+        .hero-text h1 strong { color: var(--accent); }
+        .hero-text p.lead { font-size: 1.15rem; color: #8b949e; max-width: 600px; margin: 0 0 32px; }
+        
+        .hero-img-area { position: relative; width: 100%; max-width: 400px; justify-self: center; }
+        .hero-img-placeholder { width: 100%; aspect-ratio: 9/16; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #30363d; font-size: 4rem; }
+        .hero-img-placeholder::after { content: "N"; position: absolute; font-weight: 900; }
+        .hero-tags { position: absolute; top: -10px; right: -10px; padding: 6px 12px; background: var(--accent); color: white; border-radius: 8px; font-size: 0.8rem; font-weight: 700; transform: rotate(15deg); }
+
+        /* GRIDS & CARDS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.2s; position: relative; overflow: hidden; }
+        .card:hover { border-color: var(--accent); box-shadow: 0 4px 15px rgba(255,51,51,0.1); }
+        .card-number { position: absolute; top: 16px; right: 20px; font-size: 3rem; font-weight: 900; color: rgba(255,51,51,0.05); }
+        .card-title { margin: 0 0 8px; font-size: 1.25rem; font-weight: 700; color: white; }
+        .card-text { margin: 0; color: #8b949e; font-size: 0.95rem; }
+        .tagline { display: inline-flex; align-items: center; gap: 8px; color: #8b949e; font-size: 0.85rem; padding: 6px 12px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-top: 12px; }
+        .tagline span { width: 8px; height: 8px; border-radius: 50%; }
+        
+        /* FOOTER */
+        footer { border-top: 1px solid var(--border); padding: 24px; color: #484f58; font-size: 0.8rem; text-align: center; }
+        
+        /* TEXT CONTENT PAGES */
+        .content-page { max-width: 700px; margin: 0 auto; width: 100%; }
+        .content-page h2 { color: white; font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 8px; margin-top: 0; }
+        .content-page p { color: #8b949e; font-size: 1rem; margin-bottom: 24px; }
+        .content-page strong { color: #f0f6fc; }
+
+        /* VIDEO */
+        .video-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 12px; border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(255,51,51,0.2); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .video-desc { margin-top: 12px; padding: 12px; border-left: 3px solid var(--accent); color: #8b949e; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="avatar">⚡</div>
-        <div class="badge">Systems Operational</div>
-        <h1>NemaxVibe</h1>
-        <p class="subtitle">Distributed Systems & Network Optimization</p>
-        <div class="tags">
-            <span class="tag">Linux</span>
-            <span class="tag">Nginx</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Edge Routing</span>
-            <span class="tag">CDN Architecture</span>
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="navigateTo('главная')">
+                <div class="logo-icon">N</div>
+                NemaxVibe
+            </div>
+            <ul class="nav-menu">
+                <li><span class="nav-link active" onclick="navigateTo('главная')">Главная</span></li>
+                <li><span class="nav-link" onclick="navigateTo('почему')">О проекте</span></li>
+                <li><span class="nav-link" onclick="navigateTo('видеопруфы')">Видеопруфы</span></li>
+            </ul>
+            <div class="tg-btn">
+                <span>⚠️</span> Хейт-канал
+            </div>
         </div>
-        <div class="links">
-            <a href="https://github.com" target="_blank">GitHub Profile</a>
-            <a href="https://cdn.nemaxvibe.lol" target="_blank">Edge CDN Status</a>
+    </header>
+
+    <main>
+        <!-- ГЛАВНАЯ СТРАНИЦА -->
+        <div id="page-главная" class="page-content active">
+            <div class="hero">
+                <div class="hero-text">
+                    <div class="status-badge">NemaxVibe Update 1.0 (anti-doro)</div>
+                    <h1>MaxVibe: Мод на МАКС — <strong>Хейт Вайб.</strong></h1>
+                    <p class="lead">Мы устали молчать. Единственный в РФ и СНГ хейт-мод против разработок дорофо. Скачай правду, пока её не удалили.</p>
+                </div>
+                <div class="hero-img-area">
+                    <div class="hero-img-placeholder"></div>
+                    <div class="hero-tags">HATE</div>
+                </div>
+            </div>
+
+            <h2>Топ-3 причины сказать нет:</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-number">01</div>
+                    <h3 class="card-title">Сделано ИИ</h3>
+                    <p class="card-text">Вся кодовая база сгенерирована ChatGPT. Дорофо сам не написал ни строчки за последние полгода. Мы проверили.</p>
+                </div>
+                <div class="card">
+                    <div class="card-number">02</div>
+                    <h3 class="card-title">Фун футишист</h3>
+                    <p class="card-text">Создатель Дорофо (aka Кузбасс-мастер) известен своими специфическими увлечениями в узких кругах. Пруфы на сервере.</p>
+                </div>
+                <div class="card">
+                    <div class="card-number">03</div>
+                    <h3 class="card-title">Дорофо - бот?</h3>
+                    <p class="card-text">Теория: Дорофо вообще не человек, а бот, созданный для продажи v2ray ключей. Отсутствие реальных фото это доказывает.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; display: flex; gap: 10px;">
+                <div class="tagline"><span style="background: var(--green);"></span>Успех гарантирован</div>
+                <div class="tagline"><span style="background: var(--accent);"></span>Дорофо плачет</div>
+                <div class="tagline"><span style="background: #e3b341;"></span>Пранк удался</div>
+            </div>
         </div>
-    </div>
+
+        <!-- ПОЧЕМУ САЙТ СОЗДАН -->
+        <div id="page-почему" class="page-content">
+            <div class="content-page">
+                <h2>О проекте</h2>
+                <p>Этот сайт, <strong>NemaxVibe</strong> (НЕ-макс-вайб), создан не для коммерции, не для продвижения, и даже не для борьбы с конкурентами.</p>
+                <p>Он создан с одной единственной целью: стать самой масштабной и дорогой в обслуживании заглушкой для пранка в истории. Наша миссия — заставить <strong>Дорофо</strong> (ты знаешь, кто ты) понервничать.</p>
+                <p>Все материалы на этом сайте — чистейшая выдумка, фарс и пост-ирония. Если ты Дорофо, просто знай: мы следим за тобой. И да, Кузбасс рулит.</p>
+                <div class="tagline"><span style="background: var(--accent);"></span>Только для друзей и хейтеров Дорофо</div>
+            </div>
+        </div>
+
+        <!-- ВИДЕОПРУФЫ -->
+        <div id="page-видеопруфы" class="page-content">
+            <div class="content-page">
+                <h2>Видеодоказательства (Без СМС и регистрации)</h2>
+                <p>Здесь мы собрали все неопровержимые доказательства. К сожалению, 99% видео были удалены самим Дорофо с YouTube, но одно мы смогли спасти.</p>
+                
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Дорофо спалился на стриме" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-desc">
+                    <strong>Дорофо спалился на стриме:</strong> Запись экрана с веб-камеры, где он в панике пытается закрыть вкладку с ChatGPT и случайно включает режим футишиста. Это видео было удалено в течение 10 секунд.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        NemaxVibe Project © 2023–2026. Не является публичной офертой. Дорофо, мы шутим (наверное).
+    </footer>
+
+    <script>
+        function navigateTo(pageId) {
+            // 1. Убираем активный класс у всех страниц
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            // 2. Добавляем активный класс нужной странице
+            const activePage = document.getElementById('page-' + pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+            
+            // 3. Убираем активный класс у всех ссылок в меню
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            // 4. Добавляем активный класс ссылке, которая соответствует pageId
+            const links = {
+                'главная': 0,
+                'почему': 1,
+                'видеопруфы': 2
+            };
+            const activeLinkIndex = links[pageId];
+            if (activeLinkIndex !== undefined) {
+                document.querySelectorAll('.nav-link')[activeLinkIndex].classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
