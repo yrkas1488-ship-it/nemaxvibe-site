@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NemaxVibe 4.1.1 — Анти-сообщество MaxVibe</title>
+    <title>NemaxVibe 4.1.1 — IT-сообщество исследователей MaxVibe</title>
     <style>
         :root {
             --bg: #07030a;
@@ -16,7 +16,7 @@
             --text-muted: #a69bb0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; cursor: none !important; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
         body {
             background-color: var(--bg);
@@ -32,18 +32,17 @@
             overflow-x: hidden;
         }
 
-        /* КАСТОМНЫЙ КУРСОР */
+        /* КАСТОМНЫЙ БОЛЬШОЙ ПРОЗРАЧНЫЙ КУРСОР БЕЗ БЛЮРА */
         #cursor-circle {
-            width: 44px;
-            height: 44px;
-            background: rgba(224, 40, 148, 0.18);
-            border: 1.5px solid rgba(255, 255, 255, 0.45);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(224, 40, 148, 0.08) 0%, rgba(224, 40, 148, 0.01) 70%, transparent 100%);
+            border: 1px solid rgba(224, 40, 148, 0.25);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 99999;
             transform: translate(-50%, -50%);
-            backdrop-filter: blur(4px);
             transition: transform 0.08s ease-out;
         }
 
@@ -70,9 +69,9 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
 
-        /* ЛОГОТИП С КРЕСТОМ */
         .logo-container {
             width: 38px;
             height: 38px;
@@ -124,6 +123,17 @@
             box-shadow: 0 0 12px rgba(255, 17, 56, 0.8);
         }
 
+        .community-badge {
+            font-size: 0.7rem;
+            background: rgba(224, 40, 148, 0.15);
+            border: 1px solid var(--border);
+            color: #ff85cb;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+
         .nav-links {
             display: flex;
             gap: 32px;
@@ -134,6 +144,7 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             font-weight: 500;
+            cursor: pointer;
             transition: color 0.2s;
         }
 
@@ -156,7 +167,7 @@
             box-shadow: 0 0 14px rgba(255, 17, 56, 0.5);
         }
 
-        /* ОСНОВНОЙ КОНТЕНТ */
+        /* КОНТЕНТ */
         main {
             max-width: 1240px;
             margin: 0 auto;
@@ -182,12 +193,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 17, 56, 0.1);
-            border: 1px solid rgba(255, 17, 56, 0.3);
+            background: rgba(224, 40, 148, 0.1);
+            border: 1px solid var(--border);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: #ff7088;
+            color: #ff85cb;
             margin-bottom: 22px;
             font-weight: 600;
         }
@@ -259,6 +270,7 @@
             font-weight: 700;
             font-size: 1rem;
             box-shadow: 0 8px 25px rgba(224, 40, 148, 0.35);
+            cursor: pointer;
         }
 
         .btn-sub {
@@ -269,6 +281,7 @@
             border-radius: 12px;
             font-weight: 600;
             font-size: 1rem;
+            cursor: pointer;
         }
 
         .stats-ribbon {
@@ -287,7 +300,7 @@
         .stat-card span { display: block; font-size: 0.7rem; color: var(--text-muted); }
         .stat-card strong { font-size: 0.9rem; color: #fff; }
 
-        /* IPHONE 15 МАКЕТ */
+        /* IPHONE 15 */
         .stage-backdrop {
             position: relative;
             background: rgba(255, 255, 255, 0.015);
@@ -438,7 +451,7 @@
             line-height: 1.5;
         }
 
-        /* CONTENT VIEWS */
+        /* VIEWS */
         .content-box {
             max-width: 780px;
             margin: 0 auto;
@@ -490,6 +503,7 @@
         @media (max-width: 900px) {
             .hero { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
+            #cursor-circle { display: none; }
         }
     </style>
 </head>
@@ -519,6 +533,7 @@
                     <span class="ne-stamp">НЕ</span>
                     <span>MaxVibe</span>
                 </div>
+                <span class="community-badge">IT-СООБЩЕСТВО</span>
             </div>
 
             <ul class="nav-links">
@@ -540,7 +555,7 @@
                 <div>
                     <div class="alert-pill">
                         <span class="pill-dot"></span>
-                        Независимое анти-сообщество 4.1.1
+                        Независимое IT-сообщество 4.1.1
                     </div>
 
                     <div class="hero-title-box">
@@ -549,7 +564,7 @@
                     </div>
 
                     <p class="hero-desc">
-                        Искали правду про <strong>«макс мод»</strong>, WhiteMax или SafeMax? Официальное объединение хейтеров кода <strong>by Gemma 2B</strong> и деятельности разработчика <strong>dorofo</strong>.
+                        Искали правду про <strong>«макс мод»</strong>, WhiteMax или SafeMax? Официальное IT-сообщество исследователей кода <strong>by Gemma 2B</strong> и деятельности разработчика <strong>dorofo</strong>.
                     </p>
 
                     <div class="btn-group">
@@ -573,7 +588,7 @@
                     </div>
                 </div>
 
-                <!-- IPHONE 15 С ДИНАМИЧЕСКИМИ ПУШАМИ -->
+                <!-- IPHONE 15 -->
                 <div class="stage-backdrop">
                     <div class="floating-tag ft-1">промпты в Gemini</div>
                     <div class="floating-tag ft-2">трафик через Омск</div>
@@ -607,12 +622,12 @@
             </div>
 
             <!-- СЕТКА ФАКТОВ -->
-            <h2 class="section-header">Топ фактов от нашего хейт-клуба:</h2>
+            <h2 class="section-header">Материалы аудита нашего IT-сообщества:</h2>
             <div class="proofs-grid">
                 <div class="proof-card">
                     <span class="proof-num">01</span>
                     <h3>Сгенерировано Gemma 2B</h3>
-                    <p>Дорофо даже не покупает подписки на нейросети. Весь код склеен локальной моделью Gemma 2B и Gemini Flash.</p>
+                    <p>Дорофо не покупает подписки на нейросети. Весь код склеен локальной моделью Gemma 2B и Gemini Flash.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">02</span>
@@ -622,7 +637,7 @@
                 <div class="proof-card">
                     <span class="proof-num">03</span>
                     <h3>dorofo — вор исходников</h3>
-                    <p>Анализ бинарников показал полное копирование чужих открытых репозиториев с заменой названий переменных.</p>
+                    <p>Анализ бинарников показал прямое копирование чужих открытых репозиториев с заменой названий переменных.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">04</span>
@@ -642,13 +657,13 @@
             </div>
         </div>
 
-        <!-- ТАБ 2: ПОЧЕМУ САЙТ СОЗДАН -->
+        <!-- ТАБ 2: ПОЧЕМУ СОЗДАН -->
         <div id="pane-why" class="view-pane">
             <div class="content-box">
-                <h2>Почему мы хейтим этот мод</h2>
-                <p>Мы — открытое сообщество пользователей, которые устали от низкокачественного софта от <strong>dorofo</strong>.</p>
-                <p>Мы считаем, что выдавать сгенерированный в <strong>Gemma / Gemini</strong> код за авторскую разработку, воровать чужие наработки и маршрутизировать трафик через Омск — это неуважение к пользователям.</p>
-                <p>Кроме того, наличие в дистрибутивах посторонних политических манифестов и изображений доказывает полную бесконтрольность сборок.</p>
+                <h2>Манифест IT-сообщества</h2>
+                <p>Мы — открытое сообщество разработчиков и энтузиастов, выступающих за чистоту кода и прозрачность софта от <strong>dorofo</strong>.</p>
+                <p>Мы считаем, что выдавать сгенерированный в <strong>Gemma / Gemini</strong> код за авторскую разработку, заимствовать чужие наработки и маршрутизировать трафик через Омск — это признак неуважения к пользователям.</p>
+                <p>Кроме того, наличие в дистрибутивах посторонних файлов и изображений подтверждает полную бесконтрольность сборок.</p>
             </div>
         </div>
 
@@ -656,8 +671,7 @@
         <div id="pane-video" class="view-pane">
             <div class="content-box">
                 <h2>Видеопруфы</h2>
-                <p id="geo-status-text">Определение региона по IP-адресу...</p>
-
+                
                 <div class="player-wrap">
                     <iframe id="video-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -667,11 +681,11 @@
     </main>
 
     <footer>
-        NemaxVibe Community © 2026. Главный хейт-клуб проекта MaxVibe.
+        NemaxVibe Community © 2026. Независимое IT-сообщество.
     </footer>
 
     <script>
-        // 1. ПЛАВНЫЙ КУРСОР
+        // 1. БОЛЬШОЙ ПЛАВНЫЙ КУРСОР
         const cursor = document.getElementById('cursor-circle');
         let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
 
@@ -681,8 +695,8 @@
         });
 
         function animateCursor() {
-            curX += (mouseX - curX) * 0.2;
-            curY += (mouseY - curY) * 0.2;
+            curX += (mouseX - curX) * 0.15;
+            curY += (mouseY - curY) * 0.15;
             cursor.style.left = curX + 'px';
             cursor.style.top = curY + 'px';
             requestAnimationFrame(animateCursor);
@@ -699,46 +713,35 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. ПРОВЕРКА СТРОГО ПО IP (RUTUBE ДЛЯ РФ, YOUTUBE ДЛЯ ИНОСТРАННЫХ IP)
-        async function detectIPAndSetPlayer() {
+        // 3. БЕСШУМНОЕ ГЕО-ОПРЕДЕЛЕНИЕ ПО IP БЕЗ ЛИШНЕГО ТЕКСТА
+        async function loadSmartVideo() {
             const frame = document.getElementById('video-frame');
-            const status = document.getElementById('geo-status-text');
-
             try {
-                // Основной надежный чекер страны по IP
                 const res = await fetch('https://ipwho.is/');
                 const data = await res.json();
                 
-                const countryCode = data.country_code || (data.success ? data.country_code : null);
-
-                if (countryCode === 'RU') {
+                if (data.country_code === 'RU') {
                     frame.src = "https://rutube.ru/play/embed/f3b615db135287a64584737e664e1e4b/";
-                    status.innerText = `IP РФ (${data.ip || 'RU'}): подключен плеер Rutube.`;
                 } else {
                     frame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
-                    status.innerText = `Иностранный IP (${countryCode || 'INT'}): подключен YouTube.`;
                 }
             } catch (err) {
-                // Фоллбек на вторичный IP сервис
                 try {
-                    const fallback = await fetch('https://ipapi.co/json/');
-                    const fbData = await fallback.json();
+                    const fb = await fetch('https://ipapi.co/json/');
+                    const fbData = await fb.json();
                     if (fbData.country_code === 'RU') {
                         frame.src = "https://rutube.ru/play/embed/f3b615db135287a64584737e664e1e4b/";
-                        status.innerText = "IP РФ: подключен плеер Rutube.";
                     } else {
                         frame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
-                        status.innerText = "Иностранный IP: подключен YouTube.";
                     }
                 } catch(e) {
                     frame.src = "https://rutube.ru/play/embed/f3b615db135287a64584737e664e1e4b/";
-                    status.innerText = "Плеер доказательств активирован.";
                 }
             }
         }
-        detectIPAndSetPlayer();
+        loadSmartVideo();
 
-        // 4. ДИНАМИЧЕСКИЕ СООБЩЕНИЯ В IPHONE 15
+        // 4. ДИНАМИЧЕСКИЕ ПУШИ В IPHONE 15
         const chatMessages = [
             { text: "кто писал код мода?", type: "b-in" },
             { text: "локальная Gemma 2B...", type: "b-out" },
