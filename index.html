@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NemaxVibe | DevOps & Infrastructure</title>
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --accent: #58a6ff; --green: #3fb950; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 32px; max-width: 520px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .avatar { width: 72px; height: 72px; border-radius: 50%; background: #21262d; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; border: 2px solid var(--accent); }
+        h1 { margin: 0 0 8px 0; font-size: 1.5rem; color: #f0f6fc; }
+        p.subtitle { margin: 0 0 20px 0; color: #8b949e; font-size: 0.95rem; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(63, 185, 80, 0.15); color: var(--green); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px; }
+        .badge::before { content: ""; width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+        .tag { background: #21262d; color: #8b949e; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-family: monospace; }
+        .links a { display: block; text-align: center; background: #21262d; color: #f0f6fc; text-decoration: none; padding: 10px; border-radius: 6px; font-weight: 500; border: 1px solid var(--border); transition: 0.2s; margin-top: 10px; }
+        .links a:hover { background: #30363d; border-color: #8b949e; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="avatar">⚡</div>
+        <div class="badge">Systems Operational</div>
+        <h1>NemaxVibe</h1>
+        <p class="subtitle">Distributed Systems & Network Optimization</p>
+        <div class="tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Edge Routing</span>
+            <span class="tag">CDN Architecture</span>
+        </div>
+        <div class="links">
+            <a href="https://github.com" target="_blank">GitHub Profile</a>
+            <a href="https://cdn.nemaxvibe.lol" target="_blank">Edge CDN Status</a>
+        </div>
+    </div>
+</body>
+</html>
