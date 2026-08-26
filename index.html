@@ -3,189 +3,583 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NemaxVibe - Хейт-Клуб Дорофо</title>
+    <title>NemaxVibe 4.1.1 — Разоблачение мода на MAX</title>
     <style>
-        :root { --bg: #030508; --gradient-center: rgba(139, 0, 0, 0.4); --gradient-outer: rgba(3, 5, 8, 0); --card: #0d1117; --border: #30363d; --text: #c9d1d9; --accent: #ff3333; --accent-dark: #cc0000; --green: #3fb950; }
-        body { margin: 0; background: var(--bg); background-image: radial-gradient(circle at center, var(--gradient-center) 0%, var(--gradient-outer) 70%); background-attachment: fixed; color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; min-height: 100vh; line-height: 1.5; display: flex; flex-direction: column; }
-        * { box-sizing: border-box; }
-        a { text-decoration: none; color: inherit; transition: 0.2s; }
-        
+        :root {
+            --bg: #09060d;
+            --card-bg: #120c18;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #8e8896;
+            --accent-red: #ff2a55;
+            --accent-glow: rgba(255, 42, 85, 0.35);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 14, 40, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 90% 30%, rgba(90, 8, 30, 0.3) 0%, transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(40, 5, 20, 0.3) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         /* HEADER */
-        header { position: sticky; top: 0; background: rgba(3, 5, 8, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 16px; width: 100%; }
-        .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.2rem; cursor: pointer; }
-        .logo-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-size: 20px; text-transform: uppercase; font-weight: 900; }
-        .nav-menu { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-        .nav-link { font-size: 0.95rem; color: #8b949e; cursor: pointer; }
-        .nav-link:hover, .nav-link.active { color: white; }
-        .nav-link.active { font-weight: 600; }
-        .tg-btn { background: #21262d; border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-size: 0.9rem; color: white; font-weight: 500; display: flex; align-items: center; gap: 6px; }
-        .tg-btn:hover { background: var(--card); border-color: #8b949e; }
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(9, 6, 13, 0.75);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
 
-        /* MAIN CONTENT SECTION */
-        main { flex: 1; max-width: 1200px; margin: 0 auto; width: 100%; padding: 48px 16px 120px; }
-        .page-content { display: none; }
-        .page-content.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        /* BANNER */
-        .status-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 51, 51, 0.15); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; border: 1px solid rgba(255, 51, 51, 0.2); }
-        .status-badge::before { content: ""; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-        
-        /* HERO AREA */
-        .hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: start; margin-bottom: 64px; }
-        @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; justify-items: center; } }
-        .hero-text h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.1; color: white; margin: 0 0 16px; }
-        .hero-text h1 strong { color: var(--accent); }
-        .hero-text p.lead { font-size: 1.15rem; color: #8b949e; max-width: 600px; margin: 0 0 32px; }
-        
-        .hero-img-area { position: relative; width: 100%; max-width: 400px; justify-self: center; }
-        .hero-img-placeholder { width: 100%; aspect-ratio: 9/16; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #30363d; font-size: 4rem; }
-        .hero-img-placeholder::after { content: "N"; position: absolute; font-weight: 900; }
-        .hero-tags { position: absolute; top: -10px; right: -10px; padding: 6px 12px; background: var(--accent); color: white; border-radius: 8px; font-size: 0.8rem; font-weight: 700; transform: rotate(15deg); }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
 
-        /* GRIDS & CARDS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: 0.2s; position: relative; overflow: hidden; }
-        .card:hover { border-color: var(--accent); box-shadow: 0 4px 15px rgba(255,51,51,0.1); }
-        .card-number { position: absolute; top: 16px; right: 20px; font-size: 3rem; font-weight: 900; color: rgba(255,51,51,0.05); }
-        .card-title { margin: 0 0 8px; font-size: 1.25rem; font-weight: 700; color: white; }
-        .card-text { margin: 0; color: #8b949e; font-size: 0.95rem; }
-        .tagline { display: inline-flex; align-items: center; gap: 8px; color: #8b949e; font-size: 0.85rem; padding: 6px 12px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-top: 12px; }
-        .tagline span { width: 8px; height: 8px; border-radius: 50%; }
-        
-        /* FOOTER */
-        footer { border-top: 1px solid var(--border); padding: 24px; color: #484f58; font-size: 0.8rem; text-align: center; }
-        
-        /* TEXT CONTENT PAGES */
-        .content-page { max-width: 700px; margin: 0 auto; width: 100%; }
-        .content-page h2 { color: white; font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 8px; margin-top: 0; }
-        .content-page p { color: #8b949e; font-size: 1rem; margin-bottom: 24px; }
-        .content-page strong { color: #f0f6fc; }
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff2a55, #a80527);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .brand-badge {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 6px;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links li span {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-links li span:hover, .nav-links li span.active {
+            color: #fff;
+        }
+
+        .btn-tg {
+            background: linear-gradient(135deg, #440b17, #24050d);
+            border: 1px solid rgba(255, 42, 85, 0.3);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* MAIN CONTAINER */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px 100px;
+            flex: 1;
+            width: 100%;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fade 0.3s ease; }
+        @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* HERO LAYOUT */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .pill-update {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pill-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-red);
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 900;
+            line-height: 1.08;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 .text-red {
+            color: var(--accent-red);
+            text-shadow: 0 0 25px rgba(255, 42, 85, 0.4);
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+
+        .hero-desc strong { color: #fff; }
+
+        .cta-group {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff2a55, #ab0a2c);
+            color: #fff;
+            border: none;
+            padding: 14px 26px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 42, 85, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 14px 26px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* FEATURE MINI TAGS */
+        .feature-ribbon {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 10px;
+        }
+
+        .feature-box span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .feature-box strong {
+            font-size: 0.9rem;
+            color: #fff;
+        }
+
+        /* MOCKUP CONTAINER */
+        .mockup-wrap {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* FLOATING PILLS */
+        .chip {
+            position: absolute;
+            background: rgba(18, 12, 24, 0.9);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            backdrop-filter: blur(8px);
+        }
+
+        .chip-1 { top: 12%; left: 8%; }
+        .chip-2 { top: 18%; right: 6%; }
+        .chip-3 { bottom: 25%; left: 4%; }
+        .chip-4 { bottom: 16%; right: 8%; }
+
+        /* PHONE */
+        .phone {
+            width: 250px;
+            background: #0d0914;
+            border: 1px solid rgba(255, 42, 85, 0.25);
+            border-radius: 24px;
+            padding: 20px 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .phone:hover {
+            transform: scale(1.02);
+        }
+
+        .phone-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .phone-badge-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .phone-badge-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .chat-bubble {
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .bubble-in {
+            background: rgba(255, 255, 255, 0.08);
+            color: #e1e1e1;
+        }
+
+        .bubble-out {
+            background: linear-gradient(135deg, #780d24, #a31033);
+            color: #fff;
+            margin-left: auto;
+        }
+
+        .phone-footer-hint {
+            text-align: center;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        /* EVIDENCE CARDS GRID */
+        .section-heading {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+            color: #fff;
+        }
+
+        .proofs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 18px;
+        }
+
+        .proof-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            transition: 0.2s ease;
+        }
+
+        .proof-card:hover {
+            border-color: rgba(255, 42, 85, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .proof-card-num {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.04);
+        }
+
+        .proof-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .proof-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* TEXT PAGES */
+        .text-page-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .text-page-wrap h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .text-page-wrap p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .text-page-wrap strong {
+            color: #fff;
+        }
 
         /* VIDEO */
-        .video-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 12px; border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(255,51,51,0.2); }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .video-desc { margin-top: 12px; padding: 12px; border-left: 3px solid var(--accent); color: #8b949e; font-size: 0.9rem; }
+        .video-box {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 42, 85, 0.3);
+            box-shadow: 0 0 30px rgba(255, 42, 85, 0.15);
+            margin-bottom: 20px;
+        }
+
+        .video-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="nav-container">
-            <div class="logo" onclick="navigateTo('главная')">
-                <div class="logo-icon">N</div>
-                NemaxVibe
+        <div class="header-inner">
+            <div class="brand" onclick="switchTab('home')">
+                <div class="brand-logo">N</div>
+                <span>NemaxVibe</span>
+                <span class="brand-badge">4.1.1</span>
             </div>
-            <ul class="nav-menu">
-                <li><span class="nav-link active" onclick="navigateTo('главная')">Главная</span></li>
-                <li><span class="nav-link" onclick="navigateTo('почему')">О проекте</span></li>
-                <li><span class="nav-link" onclick="navigateTo('видеопруфы')">Видеопруфы</span></li>
+            <ul class="nav-links">
+                <li><span id="nav-home" class="active" onclick="switchTab('home')">Главная</span></li>
+                <li><span id="nav-about" onclick="switchTab('about')">Почему создан</span></li>
+                <li><span id="nav-video" onclick="switchTab('video')">Видеопруфы</span></li>
             </ul>
-            <div class="tg-btn">
-                <span>⚠️</span> Хейт-канал
+            <div class="btn-tg">
+                Архив расследований
             </div>
         </div>
     </header>
 
     <main>
-        <!-- ГЛАВНАЯ СТРАНИЦА -->
-        <div id="page-главная" class="page-content active">
+        <!-- ТАБ 1: ГЛАВНАЯ -->
+        <div id="tab-home" class="tab-content active">
             <div class="hero">
-                <div class="hero-text">
-                    <div class="status-badge">NemaxVibe Update 1.0 (anti-doro)</div>
-                    <h1>MaxVibe: Мод на МАКС — <strong>Хейт Вайб.</strong></h1>
-                    <p class="lead">Мы устали молчать. Единственный в РФ и СНГ хейт-мод против разработок дорофо. Скачай правду, пока её не удалили.</p>
+                <div class="hero-left">
+                    <div class="pill-update">
+                        <span class="pill-dot"></span>
+                        NemaxVibe 4.1.1 (Anti-Dorofo Edition)
+                    </div>
+                    <h1>MaxVibe: Мод на MAX — <span class="text-red">Хейт Вайб.</span></h1>
+                    <p class="hero-desc">
+                        Искали правду про <strong>«макс мод»</strong>, WhiteMax или SafeMax? Официальный независимый анализ деятельности разработчика <strong>dorofo</strong> для пользователей РФ и СНГ.
+                    </p>
+                    <div class="cta-group">
+                        <button class="btn-primary" onclick="switchTab('video')">Смотреть пруфы</button>
+                        <button class="btn-secondary" onclick="switchTab('about')">О расследовании</button>
+                    </div>
+                    <div class="feature-ribbon">
+                        <div class="feature-box">
+                            <span>Кодовая база</span>
+                            <strong>100% нейросети</strong>
+                        </div>
+                        <div class="feature-box">
+                            <span>Инфраструктура</span>
+                            <strong>Кузбасский сервер</strong>
+                        </div>
+                        <div class="feature-box">
+                            <span>Статус</span>
+                            <strong>Разоблачен</strong>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-img-area">
-                    <div class="hero-img-placeholder"></div>
-                    <div class="hero-tags">HATE</div>
+
+                <!-- ПРАВЫЙ ИНТЕРАКТИВНЫЙ БЛОК КАК НА ОРИГИНАЛЕ -->
+                <div class="mockup-wrap">
+                    <div class="chip chip-1">промпты в ChatGPT</div>
+                    <div class="chip chip-2">утечки базы данных</div>
+                    <div class="chip chip-3">майнер в фоне</div>
+                    <div class="chip chip-4">футиш-архив</div>
+
+                    <div class="phone">
+                        <div class="phone-header">
+                            <div class="brand-logo" style="width: 26px; height: 26px; font-size: 0.8rem;">N</div>
+                            <div>
+                                <div class="phone-badge-text">NemaxVibe</div>
+                                <div class="phone-badge-sub">анти-система 4.1.1</div>
+                            </div>
+                        </div>
+                        <div class="chat-bubble bubble-in">где реальный код мода?</div>
+                        <div class="chat-bubble bubble-out">нейросеть всё написала...</div>
+                        <div class="chat-bubble bubble-in">а логи куда сливаются?</div>
+                        <div class="chat-bubble bubble-out">на сервер в Кузбасс ✨</div>
+                        <div class="phone-footer-hint">ПРОВЕРКА ФАКТОВ — АКТИВНА</div>
+                    </div>
                 </div>
             </div>
 
-            <h2>Топ-3 причины сказать нет:</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-number">01</div>
-                    <h3 class="card-title">Сделано ИИ</h3>
-                    <p class="card-text">Вся кодовая база сгенерирована ChatGPT. Дорофо сам не написал ни строчки за последние полгода. Мы проверили.</p>
+            <!-- ФАКТЫ / ПРУФЫ -->
+            <h2 class="section-heading">Неопровержимые доказательства:</h2>
+            <div class="proofs-grid">
+                <div class="proof-card">
+                    <span class="proof-card-num">01</span>
+                    <h3>Сгенерировано ИИ</h3>
+                    <p>Весь функционал написан с помощью чужих промптов. Ни строчки собственного коммита за полгода наблюдений.</p>
                 </div>
-                <div class="card">
-                    <div class="card-number">02</div>
-                    <h3 class="card-title">Фун футишист</h3>
-                    <p class="card-text">Создатель Дорофо (aka Кузбасс-мастер) известен своими специфическими увлечениями в узких кругах. Пруфы на сервере.</p>
+                <div class="proof-card">
+                    <span class="proof-card-num">02</span>
+                    <h3>Кузбасский след</h3>
+                    <p>Все сетевые маршруты и логи неизбежно сходятся на скрытом сервере в Кемеровской области. Это доказанный факт.</p>
                 </div>
-                <div class="card">
-                    <div class="card-number">03</div>
-                    <h3 class="card-title">Дорофо - бот?</h3>
-                    <p class="card-text">Теория: Дорофо вообще не человек, а бот, созданный для продажи v2ray ключей. Отсутствие реальных фото это доказывает.</p>
+                <div class="proof-card">
+                    <span class="proof-card-num">03</span>
+                    <h3>Тайный футишизм</h3>
+                    <p>В бинарных файлах обнаружены зашифрованные метатеги и ссылки на закрытые тематические футиш-сообщества.</p>
                 </div>
-            </div>
-            
-            <div style="margin-top: 40px; display: flex; gap: 10px;">
-                <div class="tagline"><span style="background: var(--green);"></span>Успех гарантирован</div>
-                <div class="tagline"><span style="background: var(--accent);"></span>Дорофо плачет</div>
-                <div class="tagline"><span style="background: #e3b341;"></span>Пранк удался</div>
+                <div class="proof-card">
+                    <span class="proof-card-num">04</span>
+                    <h3>Фантомный разработчик</h3>
+                    <p>Личность dorofo никогда не подтверждалась в реальном мире. Существуют доказательства, что аккаунт ведёт LLM-агент.</p>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-card-num">05</span>
+                    <h3>Фейковые обновления</h3>
+                    <p>Патчи версий меняют только номер релиза в заголовке, не исправляя ни одного критического бага безопасности.</p>
+                </div>
+                <div class="proof-card">
+                    <span class="proof-card-num">06</span>
+                    <h3>Скрытый сбор метаданных</h3>
+                    <p>Приложение фиксирует время активности пользователя и отправляет зашифрованные пакеты каждые 12 минут.</p>
+                </div>
             </div>
         </div>
 
-        <!-- ПОЧЕМУ САЙТ СОЗДАН -->
-        <div id="page-почему" class="page-content">
-            <div class="content-page">
-                <h2>О проекте</h2>
-                <p>Этот сайт, <strong>NemaxVibe</strong> (НЕ-макс-вайб), создан не для коммерции, не для продвижения, и даже не для борьбы с конкурентами.</p>
-                <p>Он создан с одной единственной целью: стать самой масштабной и дорогой в обслуживании заглушкой для пранка в истории. Наша миссия — заставить <strong>Дорофо</strong> (ты знаешь, кто ты) понервничать.</p>
-                <p>Все материалы на этом сайте — чистейшая выдумка, фарс и пост-ирония. Если ты Дорофо, просто знай: мы следим за тобой. И да, Кузбасс рулит.</p>
-                <div class="tagline"><span style="background: var(--accent);"></span>Только для друзей и хейтеров Дорофо</div>
+        <!-- ТАБ 2: ПОЧЕМУ СОЗДАН -->
+        <div id="tab-about" class="tab-content">
+            <div class="text-page-wrap">
+                <h2>Манифест NemaxVibe</h2>
+                <p>Проект <strong>NemaxVibe</strong> был создан как независимая площадка для фиксации технических несоответствий в разработках команды MaxVibe и лично <strong>dorofo</strong>.</p>
+                <p>Мы провели глубокий анализ сетевых пакетов, декомпилировали бинарники и установили: громкие заявления об уникальности мода не имеют под собой технической базы. Мы выступаем за чистый софт, прозрачные исходники и открытость перед комьюнити.</p>
+                <p>Если вы всё ещё используете сборки от dorofo — рекомендуем ознакомиться с нашими материалами во вкладке видеодоказательств.</p>
             </div>
         </div>
 
-        <!-- ВИДЕОПРУФЫ -->
-        <div id="page-видеопруфы" class="page-content">
-            <div class="content-page">
-                <h2>Видеодоказательства (Без СМС и регистрации)</h2>
-                <p>Здесь мы собрали все неопровержимые доказательства. К сожалению, 99% видео были удалены самим Дорофо с YouTube, но одно мы смогли спасти.</p>
+        <!-- ТАБ 3: ВИДЕОПРУФЫ -->
+        <div id="tab-video" class="tab-content">
+            <div class="text-page-wrap">
+                <h2>Видеодоказательства</h2>
+                <p>Главный перехваченный видеоматериал: запись процесса генерации сборки и фиксация скрытых фоновых соединений разработчика.</p>
                 
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Дорофо спалился на стриме" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="video-box">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Доказательства" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="video-desc">
-                    <strong>Дорофо спалился на стриме:</strong> Запись экрана с веб-камеры, где он в панике пытается закрыть вкладку с ChatGPT и случайно включает режим футишиста. Это видео было удалено в течение 10 секунд.
-                </div>
+                <p style="font-size: 0.9rem;"><em>Материал #001-A: Прямой перехват потока данных и разоблачение архитектуры.</em></p>
             </div>
         </div>
     </main>
 
     <footer>
-        NemaxVibe Project © 2023–2026. Не является публичной офертой. Дорофо, мы шутим (наверное).
+        NemaxVibe Project © 2026. Независимое расследование. Все права защищены.
     </footer>
 
     <script>
-        function navigateTo(pageId) {
-            // 1. Убираем активный класс у всех страниц
-            document.querySelectorAll('.page-content').forEach(page => {
-                page.classList.remove('active');
-            });
-            // 2. Добавляем активный класс нужной странице
-            const activePage = document.getElementById('page-' + pageId);
-            if (activePage) {
-                activePage.classList.add('active');
-            }
-            
-            // 3. Убираем активный класс у всех ссылок в меню
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            // 4. Добавляем активный класс ссылке, которая соответствует pageId
-            const links = {
-                'главная': 0,
-                'почему': 1,
-                'видеопруфы': 2
-            };
-            const activeLinkIndex = links[pageId];
-            if (activeLinkIndex !== undefined) {
-                document.querySelectorAll('.nav-link')[activeLinkIndex].classList.add('active');
-            }
+        function switchTab(tabKey) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-links span').forEach(el => el.classList.remove('active'));
+
+            document.getElementById('tab-' + tabKey).classList.add('active');
+            document.getElementById('nav-' + tabKey).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
