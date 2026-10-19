@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NemaxVibe 4.1.1 — IT-сообщество исследователей MaxVibe</title>
+    <title>NemaxVibe 4.1.3 — IT-сообщество исследователей MaxVibe</title>
     <style>
         :root {
             --bg: #07030a;
@@ -135,8 +135,9 @@
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links span {
@@ -148,6 +149,68 @@
         }
 
         .nav-links span:hover, .nav-links span.active { color: #fff; }
+
+        .nav-novelty-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(224, 40, 148, 0.22), rgba(255, 17, 56, 0.3));
+            border: 1px solid rgba(224, 40, 148, 0.55);
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 5px 13px;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 10px rgba(224, 40, 148, 0.25);
+            animation: noveltyPulse 2.5s infinite;
+        }
+
+        .nav-novelty-link:hover {
+            background: linear-gradient(135deg, rgba(224, 40, 148, 0.45), rgba(255, 17, 56, 0.55));
+            border-color: #ff1138;
+            box-shadow: 0 0 16px rgba(255, 17, 56, 0.6);
+            transform: translateY(-1px);
+            color: #fff;
+        }
+
+        .nav-novelty-tag {
+            background: #ff1138;
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .mob-novelty-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 14px;
+            background: rgba(224, 40, 148, 0.15);
+            border: 1px solid rgba(224, 40, 148, 0.4);
+            border-radius: 12px;
+            margin: 4px 0;
+            transition: 0.2s;
+        }
+
+        .mob-novelty-link:hover {
+            border-color: #ff1138;
+            box-shadow: 0 0 14px rgba(255, 17, 56, 0.4);
+        }
+
+        @keyframes noveltyPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(224, 40, 148, 0.25); }
+            50% { box-shadow: 0 0 18px rgba(255, 17, 56, 0.6); border-color: rgba(255, 17, 56, 0.8); }
+        }
 
         .btn-tg {
             background: linear-gradient(135deg, rgba(224, 40, 148, 0.25), rgba(120, 11, 75, 0.45));
@@ -585,6 +648,12 @@
                 <li><span id="nav-home" class="active" onclick="setTab('home')">Главная</span></li>
                 <li><span id="nav-why" onclick="setTab('why')">Почему сайт создан</span></li>
                 <li><span id="nav-video" onclick="setTab('video')">Видеопруфы</span></li>
+                <li>
+                    <a href="https://origin.nemaxvibe.lol" target="_blank" class="nav-novelty-link" title="Наш новый видеоплеер — перейдите на origin.nemaxvibe.lol">
+                        <span class="nav-novelty-tag">Новинка</span>
+                        <span>Видеоплеер ↗</span>
+                    </a>
+                </li>
             </ul>
 
             <a href="https://t.me/staroniifans" target="_blank" class="btn-tg">
@@ -599,6 +668,10 @@
             <span id="mob-home" class="active" onclick="mobileNav('home')">Главная</span>
             <span id="mob-why" onclick="mobileNav('why')">Почему сайт создан</span>
             <span id="mob-video" onclick="mobileNav('video')">Видеопруфы</span>
+            <a href="https://origin.nemaxvibe.lol" target="_blank" class="mob-novelty-link">
+                <span class="nav-novelty-tag">Новинка</span>
+                <span>Наш новый видеоплеер ↗</span>
+            </a>
             <a href="https://t.me/staroniifans" target="_blank" class="btn-tg" style="display:inline-block; text-align:center; margin-top:8px;">
                 Телеграм dorofo 🤡
             </a>
@@ -612,16 +685,16 @@
                 <div>
                     <div class="alert-pill">
                         <span class="pill-dot"></span>
-                        Независимое IT-сообщество 4.1.1
+                        Независимое IT-сообщество 4.1.3
                     </div>
 
                     <div class="hero-title-box">
                         <span class="hero-stamp-ne">НЕ</span>
-                        <h1>MaxVibe 4.1.1.<br>Мод на MAX — <br><span class="pink-gradient">Хейт Вайб.</span></h1>
+                        <h1>MaxVibe 4.1.3.<br>Мод на MAX — <br><span class="pink-gradient">Хейт Вайб.</span></h1>
                     </div>
 
                     <p class="hero-desc">
-                        Искали правду про <strong>«макс мод»</strong>, WhiteMax или SafeMax? Официальное IT-сообщество исследователей кода <strong>by Gemma 2B</strong> и деятельности разработчика <strong>dorofo</strong>.
+                        Искали правду про <strong>«макс мод»</strong>, WhiteMax или SafeMax? Официальное IT-сообщество исследователей кода <strong>by Gemma 4</strong> и деятельности разработчика <strong>dorofo</strong>.
                     </p>
 
                     <div class="btn-group">
@@ -632,7 +705,7 @@
                     <div class="stats-ribbon">
                         <div class="stat-card">
                             <span>Кодовая база</span>
-                            <strong>Gemma 2B / Gemini</strong>
+                            <strong>Gemma 4 / Gemini</strong>
                         </div>
                         <div class="stat-card">
                             <span>Трассировка</span>
@@ -649,7 +722,7 @@
                 <div class="stage-backdrop">
                     <div class="floating-tag ft-1">промпты в Gemini</div>
                     <div class="floating-tag ft-2">трафик через Омск</div>
-                    <div class="floating-tag ft-3">Gemma 2B компиляция</div>
+                    <div class="floating-tag ft-3">Gemma 4 компиляция</div>
                     <div class="floating-tag ft-4">слив чужих архивов</div>
 
                     <div class="iphone-15">
@@ -683,8 +756,8 @@
             <div class="proofs-grid">
                 <div class="proof-card">
                     <span class="proof-num">01</span>
-                    <h3>Сгенерировано Gemma 2B</h3>
-                    <p>Дорофо не покупает подписки на нейросети. Весь код склеен локальной моделью Gemma 2B и Gemini Flash.</p>
+                    <h3>Сгенерировано Gemma 4</h3>
+                    <p>Дорофо не покупает подписки на нейросети. Весь код склеен локальной моделью Gemma 4 и Gemini Flash.</p>
                 </div>
                 <div class="proof-card">
                     <span class="proof-num">02</span>
@@ -719,7 +792,7 @@
             <div class="content-box">
                 <h2>Манифест IT-сообщества</h2>
                 <p>Мы — открытое сообщество разработчиков и энтузиастов, выступающих за чистоту кода и прозрачность софта от <strong>dorofo</strong>.</p>
-                <p>Мы считаем, что выдавать сгенерированный в <strong>Gemma / Gemini</strong> код за авторскую разработку, заимствовать чужие наработки и маршрутизировать трафик через Омск — это признак неуважения к пользователям.</p>
+                <p>Мы считаем, что выдавать сгенерированный в <strong>Gemma 4 / Gemini</strong> код за авторскую разработку, заимствовать чужие наработки и маршрутизировать трафик через Омск — это признак неуважения к пользователям.</p>
                 <p>Кроме того, наличие в дистрибутивах посторонних файлов и изображений подтверждает полную бесконтрольность сборок.</p>
             </div>
         </div>
@@ -733,6 +806,17 @@
                     <iframe id="video-frame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <p style="font-size:0.9rem;"><em>Секретная видеофиксация процесса разработки и настройки омских серверов.</em></p>
+
+                <div style="margin-top:24px; padding:18px 22px; background:linear-gradient(135deg, rgba(224, 40, 148, 0.16), rgba(255, 17, 56, 0.22)); border:1px solid rgba(224, 40, 148, 0.4); border-radius:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+                    <div>
+                        <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:6px;">
+                            <span class="nav-novelty-tag">Новинка</span>
+                            <strong style="font-size:1.05rem; color:#fff;">Наш новый видеоплеер VibeTube</strong>
+                        </div>
+                        <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">Все расследования, эксклюзивные пруфы и видеоматериалы теперь также транслируются в нашем собственном независимом плеере.</p>
+                    </div>
+                    <a href="https://origin.nemaxvibe.lol" target="_blank" class="btn-main" style="text-decoration:none; padding:10px 22px; font-size:0.9rem; white-space:nowrap;">Перейти на origin.nemaxvibe.lol ↗</a>
+                </div>
             </div>
         </div>
     </main>
@@ -822,7 +906,7 @@
         // 5. ДИНАМИЧЕСКИЕ ПУШИ В IPHONE 15
         const chatMessages = [
             { text: "кто писал код мода?", type: "b-in" },
-            { text: "локальная Gemma 2B...", type: "b-out" },
+            { text: "локальная Gemma 4...", type: "b-out" },
             { text: "а логи куда уходят?", type: "b-in" },
             { text: "на сервер в Омск 🏢", type: "b-out" },
             { text: "откуда в APK фото Навального?", type: "b-in" },
