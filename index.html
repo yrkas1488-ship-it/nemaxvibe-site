@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NemaxVibe 4.1.3 — IT-сообщество исследователей MaxVibe</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <style>
         :root {
             --bg: #07030a;
@@ -173,6 +175,16 @@
             box-shadow: 0 0 16px rgba(255, 17, 56, 0.6);
             transform: translateY(-1px);
             color: #fff;
+        }
+
+        .nav-novelty-avatar {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 6px rgba(224, 40, 148, 0.6);
+            flex-shrink: 0;
         }
 
         .nav-novelty-tag {
@@ -650,6 +662,7 @@
                 <li><span id="nav-video" onclick="setTab('video')">Видеопруфы</span></li>
                 <li>
                     <a href="https://origin.nemaxvibe.lol" target="_blank" class="nav-novelty-link" title="Наш новый видеоплеер — перейдите на origin.nemaxvibe.lol">
+                        <img src="logo.png" alt="VibeTube" class="nav-novelty-avatar">
                         <span class="nav-novelty-tag">Новинка</span>
                         <span>Видеоплеер ↗</span>
                     </a>
@@ -669,6 +682,7 @@
             <span id="mob-why" onclick="mobileNav('why')">Почему сайт создан</span>
             <span id="mob-video" onclick="mobileNav('video')">Видеопруфы</span>
             <a href="https://origin.nemaxvibe.lol" target="_blank" class="mob-novelty-link">
+                <img src="logo.png" alt="VibeTube" class="nav-novelty-avatar" style="width:26px; height:26px;">
                 <span class="nav-novelty-tag">Новинка</span>
                 <span>Наш новый видеоплеер ↗</span>
             </a>
@@ -807,13 +821,16 @@
                 </div>
                 <p style="font-size:0.9rem;"><em>Секретная видеофиксация процесса разработки и настройки омских серверов.</em></p>
 
-                <div style="margin-top:24px; padding:18px 22px; background:linear-gradient(135deg, rgba(224, 40, 148, 0.16), rgba(255, 17, 56, 0.22)); border:1px solid rgba(224, 40, 148, 0.4); border-radius:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
-                    <div>
-                        <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:6px;">
-                            <span class="nav-novelty-tag">Новинка</span>
-                            <strong style="font-size:1.05rem; color:#fff;">Наш новый видеоплеер VibeTube</strong>
+                <div style="margin-top:24px; padding:18px 22px; background:linear-gradient(135deg, rgba(224, 40, 148, 0.16), rgba(255, 17, 56, 0.22)); border:1px solid rgba(224, 40, 148, 0.4); border-radius:16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+                    <div style="display:flex; align-items:center; gap:16px;">
+                        <img src="logo.png" alt="VibeTube" style="width:50px; height:50px; border-radius:14px; object-fit:cover; border:2px solid rgba(224, 40, 148, 0.6); box-shadow:0 0 14px rgba(224, 40, 148, 0.5); flex-shrink:0;">
+                        <div>
+                            <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:6px;">
+                                <span class="nav-novelty-tag">Новинка</span>
+                                <strong style="font-size:1.05rem; color:#fff;">Наш новый видеоплеер VibeTube</strong>
+                            </div>
+                            <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">Все расследования, эксклюзивные пруфы и видеоматериалы теперь также транслируются в нашем собственном независимом плеере.</p>
                         </div>
-                        <p style="font-size:0.9rem; color:var(--text-muted); margin:0;">Все расследования, эксклюзивные пруфы и видеоматериалы теперь также транслируются в нашем собственном независимом плеере.</p>
                     </div>
                     <a href="https://origin.nemaxvibe.lol" target="_blank" class="btn-main" style="text-decoration:none; padding:10px 22px; font-size:0.9rem; white-space:nowrap;">Перейти на origin.nemaxvibe.lol ↗</a>
                 </div>
